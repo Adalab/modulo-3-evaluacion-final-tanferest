@@ -17,15 +17,23 @@ const App = () => {
       setMovieData(apiData);
     });
   }, []);
-  // Funciones
-  const handleTitleInput = (value) => {
-    setTitleSearch(value);
-  };
-
+  // Filtros
   const filterTitle = movieData
   .filter((item) => {
     return titleSearch === '' ? true : item.movie.toLowerCase().includes(titleSearch.toLowerCase())  
   });
+  // Funciones
+  const getYears = () => {
+    const movieYear = movieData.map((item) => item.year);
+    const setOfYears = new Set(movieYear);
+    const arrayOfYears = [...setOfYears];
+    return arrayOfYears;
+  };
+  getYears();
+  const handleTitleInput = (value) => {
+    setTitleSearch(value);
+  };
+
 
   return (
     <>
@@ -33,7 +41,7 @@ const App = () => {
         <h1>Wow</h1>
       </header>
       <main>
-        <Filters handleTitle={handleTitleInput} />
+        <Filters handleTitle={handleTitleInput} inputValue={titleSearch}/>
         <MovieList movies={filterTitle} />
       </main>
     </>

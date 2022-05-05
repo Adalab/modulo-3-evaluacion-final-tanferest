@@ -5,7 +5,7 @@ function Filters (props) {
         ev.preventDefault();
     }
     return <form onSubmit={handleSubmit}>
-        <FilterByTitle handleTitle={props.handleTitle}/>
+        <FilterByTitle handleTitle={props.handleTitle} inputValue={props.inputValue}/>
     </form>
 }
 
