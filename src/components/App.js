@@ -1,8 +1,9 @@
 // import {Route, Routes} from 'react-router-dom';
 import { useState, useEffect } from 'react';
-
+import { Routes, Route } from 'react-router-dom';
 import getMovieData from '../services/movieData';
 import Filters from './Filters';
+import MovieDetail from './MovieDetail';
 import MovieList from './MovieList';
 
 const App = () => {
@@ -18,19 +19,21 @@ const App = () => {
       setMovieData(apiData);
     });
   }, []);
-  
+
   // Filtros
   const filters = movieData
-  .filter((item) => {
-    return titleSearch === '' ? true : item.movie.toLowerCase().includes(titleSearch.toLowerCase())  
-  })
-  .filter((item) => {
-    if (selectYear === 'all') {
-      return true;
-    } else {
-      return selectYear.includes(item.year)
-    }
-  });
+    .filter((item) => {
+      return titleSearch === ''
+        ? true
+        : item.movie.toLowerCase().includes(titleSearch.toLowerCase());
+    })
+    .filter((item) => {
+      if (selectYear === 'all') {
+        return true;
+      } else {
+        return selectYear.includes(item.year);
+      }
+    });
 
   // Funciones
   const getYears = () => {
@@ -46,8 +49,7 @@ const App = () => {
 
   const handleYearInput = (value) => {
     setSelectYear(value);
-  }
-
+  };
 
   return (
     <>
@@ -55,12 +57,26 @@ const App = () => {
         <h1>Wow</h1>
       </header>
       <main>
-        <Filters 
-        handleTitle={handleTitleInput} 
-        inputTextValue={titleSearch}
-        years={getYears()}
-        handleYear={handleYearInput}/>
-        <MovieList movies={filters} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Filters
+                  handleTitle={handleTitleInput}
+                  inputTextValue={titleSearch}
+                  years={getYears()}
+                  handleYear={handleYearInput}
+                />
+                <MovieList movies={filters} />
+              </>
+            }
+          />
+          <Route 
+          path="/movie/:id"
+          element={<MovieDetail />}
+          />
+        </Routes>
       </main>
     </>
   );
