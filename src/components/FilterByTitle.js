@@ -10,7 +10,7 @@ function FilterByTitle (props) {
         name="title"
         id="title"
         onChange={handleInput}
-        value={props.inputValue}
+        value={props.inputTextValue}
         />
     </>
     );

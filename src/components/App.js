@@ -9,6 +9,7 @@ const App = () => {
   // Constantes de estado
   const [movieData, setMovieData] = useState([]);
   const [titleSearch, setTitleSearch] = useState('');
+  const [selectYear, setSelectYear] = useState('all');
 
   // useEffect
   useEffect(() => {
@@ -17,11 +18,20 @@ const App = () => {
       setMovieData(apiData);
     });
   }, []);
+  
   // Filtros
-  const filterTitle = movieData
+  const filters = movieData
   .filter((item) => {
     return titleSearch === '' ? true : item.movie.toLowerCase().includes(titleSearch.toLowerCase())  
+  })
+  .filter((item) => {
+    if (selectYear === 'all') {
+      return true;
+    } else {
+      return selectYear.includes(item.year)
+    }
   });
+
   // Funciones
   const getYears = () => {
     const movieYear = movieData.map((item) => item.year);
@@ -29,10 +39,14 @@ const App = () => {
     const arrayOfYears = [...setOfYears];
     return arrayOfYears;
   };
-  getYears();
+
   const handleTitleInput = (value) => {
     setTitleSearch(value);
   };
+
+  const handleYearInput = (value) => {
+    setSelectYear(value);
+  }
 
 
   return (
@@ -41,8 +55,12 @@ const App = () => {
         <h1>Wow</h1>
       </header>
       <main>
-        <Filters handleTitle={handleTitleInput} inputValue={titleSearch}/>
-        <MovieList movies={filterTitle} />
+        <Filters 
+        handleTitle={handleTitleInput} 
+        inputTextValue={titleSearch}
+        years={getYears()}
+        handleYear={handleYearInput}/>
+        <MovieList movies={filters} />
       </main>
     </>
   );
