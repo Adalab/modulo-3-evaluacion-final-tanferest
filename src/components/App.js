@@ -1,6 +1,6 @@
-// import {Route, Routes} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { matchPath, useLocation } from 'react-router-dom';
 import getMovieData from '../services/movieData';
 import Filters from './Filters';
 import MovieDetail from './MovieDetail';
@@ -51,6 +51,14 @@ const App = () => {
     setSelectYear(value);
   };
 
+  // Rutas
+  const { pathname } = useLocation();
+  const dataPath = matchPath('/movie/:id', pathname);
+  console.log(dataPath);
+  const movieInd = dataPath !== null ? dataPath.params.id : null;
+  const clickedMovie = movieData.find((item) => item.id === parseInt(movieInd));
+  console.log(`Clicked: ${clickedMovie}`);
+
   return (
     <>
       <header>
@@ -72,9 +80,9 @@ const App = () => {
               </>
             }
           />
-          <Route 
-          path="/movie/:id"
-          element={<MovieDetail />}
+          <Route
+            path="/movie/:id"
+            element={<MovieDetail item={clickedMovie} />}
           />
         </Routes>
       </main>

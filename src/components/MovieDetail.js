@@ -1,4 +1,5 @@
 function MovieDetail (props) {
+    console.log(props)
     return (
         <article>
             <img className="movie_img" src={props.item.poster} alt={`${props.item.movie} poster`}/>

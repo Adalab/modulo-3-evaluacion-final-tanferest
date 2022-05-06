@@ -1,9 +1,9 @@
 import MovieItem from "./MovieItem";
 
 function MovieList (props) {
-    const movieInfo = props.movies.map((item, index) => {
+    const movieInfo = props.movies.map((item) => {
         return (
-        <li key={index}>
+        <li key={item.id}>
             <MovieItem item={item} />
         </li>
         );
