@@ -40,7 +40,7 @@ const App = () => {
     const movieYear = movieData.map((item) => item.year);
     const setOfYears = new Set(movieYear);
     const arrayOfYears = [...setOfYears];
-    return arrayOfYears;
+    return arrayOfYears.sort((a,b) => a - b);
   };
 
   const handleTitleInput = (value) => {
