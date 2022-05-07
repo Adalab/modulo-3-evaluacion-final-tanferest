@@ -1,4 +1,12 @@
-.movie_img {
-    width: 100px;
-    height: 150px;
+.movie {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #E9E1E1;
+    text-align: center;
+    &__img {
+        width: 180px;
+        margin-bottom: 15px;
+    }
 }

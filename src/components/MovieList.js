@@ -1,4 +1,5 @@
 import MovieItem from "./MovieItem";
+import '../styles/MovieList.scss'
 
 function MovieList (props) {
     if (props.movies.length === 0) {
