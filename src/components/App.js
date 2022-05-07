@@ -4,10 +4,12 @@ import { matchPath, useLocation } from 'react-router-dom';
 
 import getMovieData from '../services/movieData';
 import ls from '../services/ls';
+import '../styles/Main.scss';
 
 import Filters from './Filters';
 import MovieDetail from './MovieDetail';
 import MovieList from './MovieList';
+import Header from './Header';
 
 const App = () => {
   // Constantes de estado
@@ -69,10 +71,8 @@ const App = () => {
 
   return (
     <>
-      <header>
-        <h1>Wow</h1>
-      </header>
-      <main>
+      <Header />
+      <main className="main">
         <Routes>
           <Route
             path="/"

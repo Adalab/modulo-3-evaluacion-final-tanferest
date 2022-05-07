@@ -6,12 +6,12 @@ function MovieList (props) {
     } else{
     const movieInfo = props.movies.map((item) => {
         return (
-        <li key={item.id}>
+        <li className="movie-list__item" key={item.id}>
             <MovieItem item={item} />
         </li>
     );
     });
-    return <ul>
+    return <ul className="movie-list">
         {movieInfo}
     </ul>
     }
