@@ -77,7 +77,7 @@ const App = () => {
                   handleYear={handleYearInput}
                   inputYearValue={selectYear}
                 />
-                <MovieList movies={filters} />
+                <MovieList movies={filters} inputTextValue={titleSearch}/>
               </>
             }
           />
