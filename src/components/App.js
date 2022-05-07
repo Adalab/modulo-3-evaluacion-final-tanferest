@@ -1,24 +1,32 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { matchPath, useLocation } from 'react-router-dom';
+
 import getMovieData from '../services/movieData';
+import ls from '../services/ls';
+
 import Filters from './Filters';
 import MovieDetail from './MovieDetail';
 import MovieList from './MovieList';
 
 const App = () => {
   // Constantes de estado
-  const [movieData, setMovieData] = useState([]);
+  const [movieData, setMovieData] = useState(ls.get('movies', []));
   const [titleSearch, setTitleSearch] = useState('');
   const [selectYear, setSelectYear] = useState('all');
 
   // useEffect
   useEffect(() => {
+    if(movieData.length === 0){
     getMovieData().then((apiData) => {
       console.log(apiData);
       setMovieData(apiData);
     });
-  }, []);
+  }},[movieData]);
+
+  useEffect(() => {
+    ls.set('movies', movieData);
+  }, [movieData])
 
   // Filtros
   const filters = movieData
