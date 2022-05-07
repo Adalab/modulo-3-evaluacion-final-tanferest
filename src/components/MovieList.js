@@ -3,7 +3,9 @@ import '../styles/MovieList.scss'
 
 function MovieList (props) {
     if (props.movies.length === 0) {
-        return <p>Ningún título coincide con "{props.inputTextValue}". ¡Prueba otra vez!</p>;
+        return <li className="movie-list__item">
+            <p>Ningún título coincide con "{props.inputTextValue}". ¡Prueba otra vez!</p>
+        </li>;
     } else{
     const movieInfo = props.movies.map((item) => {
         return (

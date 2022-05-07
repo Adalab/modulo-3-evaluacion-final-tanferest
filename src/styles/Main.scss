@@ -1,4 +1,9 @@
+@import './Mixins.scss';
+
 .main {
+    min-height: 100vh;
     background-color:  #E9E1E1;
+    @include tablet {
     margin-top: 20px;
+    }
 }

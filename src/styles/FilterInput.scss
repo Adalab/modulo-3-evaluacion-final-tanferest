@@ -1,0 +1,39 @@
+@import './Mixins.scss';
+
+.label {
+    margin-bottom: 6px;
+    color: #402626;
+    @include tablet {
+        margin-bottom: 12px;
+    }
+}
+
+.input-text {
+    width: 50%;
+    padding: 5px;
+    border: none;
+    margin-bottom: 25px;
+    text-align: center;
+    color:#402626;
+    font-size: 18px;
+    &::placeholder {
+        text-align: center;
+        font-size: 18px;
+        color: #BFA8A8;
+    }
+    @include tablet {
+        width: 25%;
+        padding: 8px;
+    }
+}
+
+.select {
+    margin-bottom: 20px;
+    border: none;
+    padding: 5px;
+    font-size: 18px;
+    color: #BFA8A8;
+    @include tablet {
+        padding: 5px 10px;
+    }
+}
