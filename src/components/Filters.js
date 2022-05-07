@@ -10,7 +10,8 @@ function Filters (props) {
         handleTitle={props.handleTitle} inputTextValue={props.inputTextValue}/>
         <FilterByYear 
         years={props.years}
-        handleYear={props.handleYear}/>
+        handleYear={props.handleYear}
+        inputYearValue={props.inputYearValue}/>
     </form>
 }
 

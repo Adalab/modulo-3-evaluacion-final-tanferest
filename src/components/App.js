@@ -75,6 +75,7 @@ const App = () => {
                   inputTextValue={titleSearch}
                   years={getYears()}
                   handleYear={handleYearInput}
+                  inputYearValue={selectYear}
                 />
                 <MovieList movies={filters} />
               </>

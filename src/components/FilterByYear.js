@@ -6,7 +6,7 @@ function FilterByYear (props) {
 
     return (<>
     <label htmlFor="year">Año de la película</label>
-    <select id="year" name="year" onChange={handleYear}>
+    <select id="year" name="year" value={props.inputYearValue} onChange={handleYear}>
         <option value="all">Todos</option>
         {yearOptions}
     </select>
