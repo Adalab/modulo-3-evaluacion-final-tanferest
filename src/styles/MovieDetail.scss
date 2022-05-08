@@ -1,0 +1,79 @@
+@import './Mixins.scss';
+
+.detail {
+  position: relative;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  min-height: 400px;
+  padding: 20px 20px 35px 20px;
+  background-color: #bfa8a8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #e9e1e1;
+  text-align: center;
+  @include tablet {
+    min-width: 70%;
+    top: 40px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+  }
+  &__title {
+    color: #402626;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+  }
+  &__text {
+      margin-bottom: 10px;
+  }
+  &__quote {
+      max-width: 20ch;
+      font-style: italic;
+      font-size: 2rem;
+      margin: 20px 0;
+  }
+  &__img {
+    width: 220px;
+    margin-bottom: 15px;
+    border: 3px dotted #e9e1e1;
+    padding: 8px;
+    @include tablet {
+        margin-bottom: 0;
+        margin-right: 10px;
+        width: 280px;
+    }
+  }
+  &__link {
+    text-decoration: underline;
+    color: #e9e1e1;
+    @include tablet {
+        text-decoration: none;
+    }
+    &:hover {
+        color: #402626;
+        text-decoration: underline;
+    }
+  }
+  &__back {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: #e9e1e1;
+      border: 3px dotted #e9e1e1;
+    padding: 4px;
+    @include tablet {
+        font-size: 1.25rem;
+        padding: 6px;
+        left: initial;
+        right: 25px;
+    }
+    &:hover {
+        color: #402626;
+        border-color: #402626;
+    }
+  }
+}
