@@ -25,4 +25,11 @@
             background-color: #402626;
         }
     }
+    &__notfound {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #BFA8A8;
+        padding: 20px;
+    }
 }
