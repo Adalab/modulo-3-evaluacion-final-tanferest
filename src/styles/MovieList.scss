@@ -20,5 +20,9 @@
         align-items: center;
         background-color: #BFA8A8;
         padding: 20px;
+        &:hover {
+            border: 3px dotted #e9e1e1;
+            background-color: #402626;
+        }
     }
 }
