@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import { matchPath, useLocation } from 'react-router-dom';
 
 import getMovieData from '../services/movieData';
-import getDirectors from '../services/directorsData';
 import ls from '../services/ls';
 import '../styles/Main.scss';
 
@@ -15,8 +14,6 @@ import Header from './Header';
 const App = () => {
   // Constantes de estado
   const [movieData, setMovieData] = useState(ls.get('movies', []));
-  const [directors, setDirectors] = useState([]);
-  const [selectDir, setSelectDir] = useState('all');
   const [titleSearch, setTitleSearch] = useState('');
   const [selectYear, setSelectYear] = useState('all');
 
@@ -28,14 +25,6 @@ const App = () => {
       setMovieData(apiData);
     });
   }},[movieData]);
-
-  useEffect(() => {
-    getDirectors()
-    .then((directorsData) => {
-      console.log(directorsData);
-      setDirectors(directorsData);
-    })
-  }, []);
 
   useEffect(() => {
     ls.set('movies', movieData);
@@ -53,13 +42,6 @@ const App = () => {
         return true;
       } else {
         return selectYear.includes(item.year);
-      }
-    })
-    .filter((item) => {
-      if (selectDir === 'all') {
-        return true;
-      } else {
-        return selectDir.includes(item.director);
       }
     });
 
@@ -79,9 +61,6 @@ const App = () => {
     setSelectYear(value);
   };
 
-  const handleDirectors = (value) => {
-    setSelectDir(value);
-  }
 
   // Rutas
   const { pathname } = useLocation();
@@ -106,9 +85,6 @@ const App = () => {
                   years={getYears()}
                   handleYear={handleYearInput}
                   inputYearValue={selectYear}
-                  handleDirectors={handleDirectors}
-                  directorsValue={selectDir}
-                  directors={directors}
                 />
                 <MovieList movies={filters} inputTextValue={titleSearch}/>
               </>
